@@ -1,0 +1,20 @@
+{% extends "layout.html" %} {% block title %}{{ question.title }}{% endblock %}
+{% block content %}
+
+<h1>{{ question.title }}</h1>
+
+{% if question.image %}
+
+<p><img src="{{ url_for('static', filename='uploads/'+question.image) }}" width="60" alt=""></p>
+
+{% endif %}
+
+<p>{{ question.message }}</p>
+
+<p>
+    <a href="{{ url_for('upvote_question', qid=question.id) }}">+</a>
+    {{ question.vote_number }} votes
+    <a href="{{ url_for('downvote_question', qid=question.id) }}">-</a>
+</p>
+
+{% endblock %}

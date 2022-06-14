@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}Ceva{% endblock %}
+
+{% block content %}
+
+
+<ul>
+    {% for item in questions %}
+    
+    <li id="{{ item.id }}">
+        <a href="{{ url_for('single_question', qid=item.id) }}">{{ item.title }}</a>
+        &nbsp;
+        <a href="{{ url_for('upvote_question', qid=item.id) }}">+</a>
+        {{ item.vote_number }}
+        <a href="{{ url_for('downvote_question', qid=item.id) }}">-</a>
+    </li>
+
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
